@@ -1,0 +1,54 @@
+{
+  "name": "jbfoundation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "foundation": "^4.2.1-1",
+    "jquery": "^3.1.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.5.1",
+    "babel-eslint": "^7.0.0",
+    "browserify": "^13.1.0",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-eslint": "^3.0.1",
+    "gulp-if": "^2.0.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-postcss": "^6.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.7.3",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "lodash": "^4.16.4",
+    "run-sequence": "^1.2.2",
+    "stringify": "^5.1.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
+  },
+  "browser": {
+    "foundation-core": "./node_modules/foundation/js/foundation/foundation.js",
+    "foundation-alerts": "./node_modules/foundation/js/foundation/foundation.alerts.js",
+    "foundation-clearing": "./node_modules/foundation/js/foundation/foundation.clearing.js",
+    "foundation-cookie": "./node_modules/foundation/js/foundation/foundation.cookie.js",
+    "foundation-dropdown": "./node_modules/foundation/js/foundation/foundation.dropdown.js",
+    "foundation-forms": "./node_modules/foundation/js/foundation/foundation.forms.js",
+    "foundation-interchange": "./node_modules/foundation/js/foundation/foundation.interchange.js",
+    "foundation-joyride": "./node_modules/foundation/js/foundation/foundation.joyride.js",
+    "foundation-magellan": "./node_modules/foundation/js/foundation/foundation.magellan.js",
+    "foundation-orbit": "./node_modules/foundation/js/foundation/foundation.orbit.js",
+    "foundation-placeholder": "./node_modules/foundation/js/foundation/foundation.placeholder.js",
+    "foundation-reveal": "./node_modules/foundation/js/foundation/foundation.reveal.js",
+    "foundation-section": "./node_modules/foundation/js/foundation/foundation.section.js",
+    "foundation-tooltips": "./node_modules/foundation/js/foundation/foundation.tooltips.js",
+    "foundation-topbar": "./node_modules/foundation/js/foundation/foundation.topbar.js"
+  }
+}
