@@ -5,7 +5,7 @@ var tasks = require('./gulptasks');
 
 
 // Config ----------------------------------------------------------------------
-const jsOpts = {
+var jsOpts = {
   watch: 'src/javascripts/**/*.js',
   entries: ['./src/javascripts/app.js'],
   extensions: ['.js'],
@@ -14,7 +14,7 @@ const jsOpts = {
   lint: ['./src/javascripts/**/*.js', '!./src/javascripts/vendor/*']
 };
 
-const sassOpts = {
+var sassOpts = {
   watch: 'src/stylesheets/**/*.{sass,scss}',
   source: './src/stylesheets/app.sass',
   outFile: 'app.css',
