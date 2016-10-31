@@ -2,7 +2,7 @@ var autoprefixer = require('autoprefixer');
 var browserify = require('browserify');
 var eslint = require('gulp-eslint');
 var gulp = require('gulp');
-var cleanCSS = require('gulp-clean-css');
+var cleanCss = require('gulp-clean-css');
 var gulpIf = require('gulp-if');
 var livereload = require('gulp-livereload');
 var postcss = require('gulp-postcss');
@@ -21,7 +21,7 @@ function createBundle(opts) {
 
   bundle = global.watch ? watchify(bundle) : bundle;
   bundle.transform(stringify({
-    extensions: ['.html'],
+    extensions: ['.html']
   }));
 
   return bundle;
@@ -35,7 +35,7 @@ function buildBundle(bundle, opts) {
     .pipe(gulpIf(global.watch, livereload()));
 }
 
-function startServer(opts) {
+function startServer() {
   return livereload.listen();
 }
 
@@ -43,7 +43,7 @@ function compileJS(opts) {
   var bundle = createBundle(opts);
 
   if (global.watch) {
-    bundle.on('update', function () {
+    bundle.on('update', function() {
       return buildBundle(bundle, opts);
     });
     bundle.on('log', gutil.log);
@@ -56,9 +56,9 @@ function lintJS(path) {
   return gulp.src(path)
     .pipe(eslint())
     .pipe(eslint.format())
-    .pipe(eslint.failOnError().on('error', function (e) {
+    .pipe(eslint.failOnError().on('error', function(e) {
       var msg = e.name + ': ' + e.message;
-      msg += ' on line ' + e.lineNumber + ' in ' + error.fileName;
+      msg += ' on line ' + e.lineNumber + ' in ' + e.fileName;
 
       gutil.log(msg);
     }));
