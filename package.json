@@ -29,6 +29,7 @@
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
     "lodash": "^4.16.4",
+    "merge-stream": "^1.0.0",
     "run-sequence": "^1.2.2",
     "stringify": "^5.1.0",
     "vinyl-source-stream": "^1.1.0",

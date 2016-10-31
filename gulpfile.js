@@ -1,5 +1,6 @@
 var del = require('del');
 var gulp = require('gulp');
+var mergeStream = require('merge-stream');
 var runSequence = require('run-sequence');
 var tasks = require('./gulptasks');
 
@@ -16,9 +17,18 @@ var jsOpts = {
 
 var sassOpts = {
   watch: 'src/stylesheets/**/*.{sass,scss}',
-  source: './src/stylesheets/app.sass',
-  outFile: 'app.css',
-  outPath: './dist/assets/css'
+  targets: [
+    {
+      source: './src/stylesheets/app.sass',
+      outFile: 'app.css',
+      outPath: './dist/assets/css'
+    },
+    {
+      source: './src/stylesheets/main.sass',
+      outFile: 'main.css',
+      outPath: './dist/assets/css'
+    }
+  ]
 };
 
 
@@ -48,7 +58,14 @@ gulp.task('minify:js', function() {
 
 // Sass tasks ------------------------------------------------------------------
 gulp.task('compile:sass', function() {
-  return tasks.compileSass(sassOpts);
+  var stream = mergeStream();
+
+  sassOpts.targets.forEach(function(t) {
+    var s = tasks.compileSass(t);
+    stream.add(s);
+  });
+
+  return stream;
 });
 
 gulp.task('watch:sass', ['set:watch', 'compile:sass'], function() {
@@ -56,7 +73,14 @@ gulp.task('watch:sass', ['set:watch', 'compile:sass'], function() {
 });
 
 gulp.task('minify:sass', function() {
-  return tasks.minify(sassOpts, 'css');
+  var stream = mergeStream();
+
+  sassOpts.targets.forEach(function(t) {
+    var s = tasks.minify(t, 'css');
+    stream.add(s);
+  });
+
+  return stream;
 });
 
 
@@ -86,10 +110,13 @@ gulp.task('clean', function() {
 });
 
 gulp.task('clean:unminified', function() {
-  return del([
-    jsOpts.outPath + '/' + jsOpts.outFile,
-    sassOpts.outPath + '/' + sassOpts.outFile
-  ]);
+  var files = [jsOpts.outPath + '/' + jsOpts.outFile];
+
+  sassOpts.targets.forEach(function(t) {
+    files.push(t.outPath + '/' + t.outFile);
+  });
+
+  return del(files);
 });
 
 
