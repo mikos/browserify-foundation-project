@@ -43,7 +43,7 @@ gulp.task('lint:js', function() {
 
 gulp.task('build:js', ['set:noWatch'], function() {
   return new Promise(function(res) {
-    return runSequence('lint:js', 'test:js', 'compile:js', res);
+    return runSequence('lint:js', 'compile:js', res);
   });
 });
 
